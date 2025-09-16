@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6646/6646479.png" type="image/x-icon">
+  <title>Kaushlendra Pratap Singh | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loader -->
+<div id="loader">
+  <div class="spinner"></div>
+</div>
+
+  <!-- Background Music -->
+<audio id="bg-music" loop>
+  <source src="./melody-of-nature-main-6672.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<!-- Custom Cursor (place directly inside <body>, near top) -->
+<div class="custom-cursor" id="customCursor" aria-hidden="true">
+  <div class="cursor-dot" id="cursorDot"></div>
+</div>
+
+
+ <!-- Header / Navbar -->
+<!-- Header -->
+<header class="header">
+  <div class="container">
+
+    <!-- Logo -->
+    <div class="logo">My Portfolio</div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="navMenu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" id="music-toggle">🎵 Music</a></li>
+        <li><a href="#" id="theme-toggle">🌙 Dark Mode</a></li>
+      </ul>
+
+      <!-- Social Links -->
+      <div class="nav-socials">
+        <a href="https://www.linkedin.com/in/kaushlendra-pratap-singh-a8b08b246/"
+           target="_blank"
+           class="social-icon linkedin">
+          in
+        </a>
+
+        <a href="https://github.com/singhskaushal49/"
+           target="_blank"
+           class="social-icon github">
+          GH
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger">☰</div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <h1>Hi, I'm <span>Kaushlendra Pratap Singh</span></h1>
+  <h2>I am a <span class="auto-text"></span></h2>
+
+  <a href="#projects" class="btn-primary">See My Work</a>
+  <a href="./Kaushlendra Pratap Singh.pdf" download class="btn-secondary">Download Resume</a>
+</section>
+
+<!-- About Section -->
+<section class="about-section" id="about">
+  <div class="about-container">
+
+    <!-- Profile Image -->
+    <div class="about-img">
+      <img src="./Kaushal Photo.png" alt="Kaushal Photo" />
+    </div>
+
+    <!-- About Text -->
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>
+        I'm <strong>Kaushlendra Pratap Singh</strong>, a passionate
+        <span>Web Developer</span> & <span>Software Developer</span>.
+        I love creating responsive, user-friendly applications and solving
+        real-world problems through code.
+      </p>
+      <p>
+        Skilled in <b>HTML, CSS, JavaScript, React, Java</b> and more —
+        I enjoy learning new technologies and building projects that make
+        a difference.
+      </p>
+      <a href="#contact" class="btn-primary">Let’s Connect</a>
+    </div>
+  </div>
+</section>
+
+<!-- Location Section -->
+<section class="location" id="location">
+  <h2>My Location</h2>
+  <div class="location-wrapper">
+    
+    <!-- Info Card -->
+    <div class="location-info">
+      <h3>📍 Based in Lucknow</h3>
+      <p>Uttar Pradesh, India</p>
+      <p>Open to relocation and remote opportunities 🌍</p>
+      <ul>
+        <li>✅ Comfortable with onsite roles</li>
+        <li>✅ Available for freelance projects</li>
+        <li>✅ Flexible working hours</li>
+      </ul>
+    </div>
+
+    <!-- Map Card -->
+    <div class="location-map">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14284.36524934773!2d80.9461667!3d26.8467088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd1b3a1c5c39%3A0x6e76b5e1cf2eec2d!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1692198123456!5m2!1sen!2sin" 
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React</div>
+      <div class="skill">Java 8</div>
+      <div class="skill">Git & GitHub</div>
+      <div class="skill">Maven</div>
+      <div class="skill">MySQL</div>
+      <div class="skill">JDBC</div>
+      <div class="skill">OOPs</div>
+      <div class="skill">System Design</div>
+      <div class="skill">GITLAB CI CD</div>
+      <div class="skill">Linux</div>
+      <div class="skill">Docker</div>
+      <div class="skill">AI Prompt</div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="card">
+        <img src="https://sortvisualizer.com/static/images/og.png" alt="Project 1" />
+        <div class="card-content">
+          <h3>Sorting Visualizer</h3>
+          <p>A tool to visualize sorting algorithms built with HTML, CSS, and JavaScript.</p>
+          <a href="#" class="card-btn">View</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://www.collidu.com/media/catalog/product/img/2/6/264daf6f89210308410d11c868f172f22a5368509e816157d95fb4ce3d6fc4f9/hospital-management-system-slide1.png" alt="Project 2" />
+        <div class="card-content">
+          <h3>Hospital Management </h3>
+          <p>A full-stack application with shopping cart and payment integration.</p>
+          <a href="#" class="card-btn">View</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNbOshLX8TQeQ9Xawjrp7CqE1c_qLAixlIlA&s" alt="Project 3" />
+        <div class="card-content">
+          <h3>Maven Market</h3>
+          <p>A blogging platform with authentication and content management.</p>
+          <a href="#" class="card-btn">View</a>
+        </div>
+      </div>
+    </div>
+  </section>
+<section id="experience" style="padding: 60px 0; background-color: #f9f9f9;">
+  <div class="container" style="max-width: 900px; margin: auto;">
+    <h2 style="text-align: center; margin-bottom: 40px; font-family: 'Arial', sans-serif; color: #333;">Experience</h2>
+    <div class="timeline">
+
+      <!-- Timeline item -->
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Software Developer</h3>
+          <span>Maruti Suzuki india LTD | Jun 2025 - Jul 2025</span>
+          <p>Worked on developing web applications using React.js and Node.js. Improved website performance by 30% and implemented user-friendly UI components.</p>
+        </div>
+      </div>
+
+      <!-- Timeline item -->
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Intern - Web Development</h3>
+          <span>QX-Lencer | Jun 2023 - Dec 2023</span>
+          <p>Assisted in front-end development projects. Learned industry best practices and optimized existing codebase for better efficiency.</p>
+        </div>
+      </div>
+
+      <!-- Timeline item -->
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3> Data analytics </h3>
+          <span>HoneyWell | Jan 2022 - May 2023</span>
+          <p>Built responsive websites for clients using HTML, CSS, JavaScript. Managed projects independently and delivered on-time solutions.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="connect" id="connect">
+  <h2>Connect With Me</h2>
+  <div class="connect-container">
+    
+    <!-- Form -->
+    <form action="https://formsubmit.co/singhskaushal49@gmail.com" method="POST" class="connect-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+
+      <!-- FormSubmit options -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+
+<!-- Testimonials Section -->
+<section class="testimonials" id="testimonials">
+  <h2>Testimonials</h2>
+  <div class="testimonials-container">
+    <div class="testimonial-card">
+      <p>
+        “Kaushlendra is an outstanding web developer. He delivered our project
+        ahead of schedule with excellent attention to detail.”
+      </p>
+      <h3>— Rahul Singh</h3>
+      <span>Project Manager, Bosch </span>
+    </div>
+    <div class="testimonial-card">
+      <p>
+        “Creative, reliable, and highly skilled. He transformed our website into
+        a modern and user-friendly platform.”
+      </p>
+      <h3>— Sarah Khan</h3>
+      <span>Founder, Qx-lencer</span>
+    </div>
+    <div class="testimonial-card">
+      <p>
+        “Great collaborator and problem solver. I look forward to working with
+        him on future projects.”
+      </p>
+      <h3>— Rahul Verma</h3>
+      <span>Team Lead, Top Tech India</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- AOS.js CDN for animation -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+</script>
+
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-container">
+      <!-- About -->
+      <div class="footer-section">
+        <h3>About Me</h3>
+        <p>
+          I am a passionate web developer focused on creating modern and
+          responsive websites to deliver the best user experience.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:singhskuahal49@gmail.com">singhskaushal49@gmail.com</a></p>
+        <p>Phone: +91 9625882776</p>
+        <div class="socials">
+          <a href="#">🌐</a>
+          <a href="#">🐦</a>
+          <a href="#">💼</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Kaushlendra Pratap Singh | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Chatbot Button -->
+<div class="chatbot-toggle" id="chatbot-toggle">💬</div>
+
+<!-- Chatbot Window -->
+<div class="chatbot" id="chatbot">
+  <div class="chatbot-header">
+    <h3>Chat with Me</h3>
+    <span id="chatbot-close">✖</span>
+  </div>
+  <div class="chatbot-messages" id="chatbot-messages">
+    <div class="message bot">Hello! 👋 How can I help you today?</div>
+  </div>
+  <div class="chatbot-input">
+    <input type="text" id="chatbot-input" placeholder="Type a message..." />
+    <button id="chatbot-send">Send</button>
+  </div>
+</div>
+
+  <!-- JavaScript for Menu -->
+  <script>
+   /* =========================
+   Navbar Toggle
+========================= */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+}
+
+/* =========================
+   Loader (hide after load)
+========================= */
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if (loader) loader.classList.add("hidden");
+});
+
+/* =========================
+   Chatbot
+========================= */
+const chatbotToggle = document.getElementById("chatbot-toggle");
+const chatbot = document.getElementById("chatbot");
+const chatbotClose = document.getElementById("chatbot-close");
+const chatbotMessages = document.getElementById("chatbot-messages");
+const chatbotInput = document.getElementById("chatbot-input");
+const chatbotSend = document.getElementById("chatbot-send");
+
+// Toggle open
+if (chatbotToggle && chatbot) {
+  chatbotToggle.addEventListener("click", () => {
+    chatbot.style.display = "flex";
+  });
+}
+
+// Close button
+if (chatbotClose && chatbot) {
+  chatbotClose.addEventListener("click", () => {
+    chatbot.style.display = "none";
+  });
+}
+
+// Add message helper
+function addMessage(text, sender) {
+  const msg = document.createElement("div");
+  msg.classList.add("message", sender);
+  msg.textContent = text;
+  chatbotMessages.appendChild(msg);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+// Send message button
+if (chatbotSend && chatbotInput) {
+  chatbotSend.addEventListener("click", () => {
+    const text = chatbotInput.value.trim();
+    if (text) {
+      addMessage(text, "user");
+      chatbotInput.value = "";
+
+      // Simple bot reply
+      setTimeout(() => {
+        let reply = "I'm still learning 🤖";
+        if (text.toLowerCase().includes("hello")) reply = "Hi there! 👋";
+        if (text.toLowerCase().includes("skills"))
+          reply = "I know HTML, CSS, JS, React, Java, and more!";
+        if (text.toLowerCase().includes("contact"))
+          reply = "You can reach me at singhskaushal49@gmail.com 📧";
+
+        addMessage(reply, "bot");
+      }, 600);
+    }
+  });
+
+  // Send on Enter key
+  chatbotInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      chatbotSend.click();
+    }
+  });
+}
+
+/* =========================
+   Background Music Toggle
+========================= */
+const musicToggle = document.getElementById("music-toggle");
+const bgMusic = document.getElementById("bg-music");
+let isPlaying = false;
+
+if (musicToggle && bgMusic) {
+  musicToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (!isPlaying) {
+      bgMusic.play();
+      musicToggle.textContent = "⏸ Pause Music";
+      isPlaying = true;
+    } else {
+      bgMusic.pause();
+      musicToggle.textContent = "🎵 Music";
+      isPlaying = false;
+    }
+  });
+}
+
+/* =========================
+   Custom Cursor
+========================= */
+(function () {
+  const cursorWrap = document.getElementById("customCursor");
+  const cursorDot = document.getElementById("cursorDot");
+
+  if (!cursorWrap || !cursorDot) return;
+
+  // Disable on touch devices
+  const isTouch =
+    matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
+  if (isTouch) {
+    cursorWrap.style.display = "none";
+    return;
+  }
+
+  // Track mouse position
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+  const ease = 0.18;
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorWrap.style.opacity = 1;
+  });
+
+  window.addEventListener("mouseleave", () => {
+    cursorWrap.style.opacity = 0;
+  });
+
+  window.addEventListener("mouseenter", () => {
+    cursorWrap.style.opacity = 1;
+  });
+
+  // Smooth follow
+  function animate() {
+    cursorX += (mouseX - cursorX) * ease;
+    cursorY += (mouseY - cursorY) * ease;
+    cursorWrap.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+
+  // Hover effect
+  const hoverElements =
+    "a, button, .card, .card-btn, .nav ul li a, .social-btn, .contact-form button, .project-grid .card";
+  document.querySelectorAll(hoverElements).forEach((el) => {
+    el.addEventListener("mouseenter", () =>
+      cursorWrap.classList.add("hover")
+    );
+    el.addEventListener("mouseleave", () =>
+      cursorWrap.classList.remove("hover")
+    );
+  });
+
+  // Click feedback
+  window.addEventListener("mousedown", () => {
+    cursorWrap.classList.add("active");
+  });
+  window.addEventListener("mouseup", () => {
+    cursorWrap.classList.remove("active");
+  });
+
+  // Respect reduced motion
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) {
+    cursorWrap.style.display = "none";
+  }
+})();
+
+/* =========================
+   Dark Mode Toggle
+========================= */
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
+
+if (themeToggle) {
+  // Load saved preference
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    themeToggle.textContent = "☀️ Light Mode";
+  }
+
+  // Toggle on click
+  themeToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+      themeToggle.textContent = "☀️ Light Mode";
+      localStorage.setItem("theme", "dark");
+    } else {
+      themeToggle.textContent = "🌙 Dark Mode";
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
+
+/* =========================
+   AOS Init (Scroll Animations)
+========================= */
+if (typeof AOS !== "undefined") {
+  AOS.init({
+    duration: 1000, // animation duration
+    once: true,     // run only once
+    offset: 120     // trigger point
+  });
+}
+
+/* =========================
+   Connect Form Submission
+========================= */
+const connectForm = document.querySelector(".connect-form");
+
+if (connectForm) {
+  connectForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const button = connectForm.querySelector("button");
+    button.textContent = "Sending...";
+
+    try {
+      await fetch(connectForm.action, {
+        method: "POST",
+        body: new FormData(connectForm),
+        headers: { Accept: "application/json" },
+      });
+
+      showPopup("✅ Your message has been sent successfully!");
+      connectForm.reset();
+    } catch (error) {
+      showPopup("❌ Oops! Something went wrong. Please try again.");
+    } finally {
+      button.textContent = "Send Message";
+    }
+  });
+}
+
+/* =========================
+   Popup Notification
+========================= */
+function showPopup(message) {
+  let popup = document.createElement("div");
+  popup.className = "popup-message";
+  popup.textContent = message;
+  document.body.appendChild(popup);
+
+  setTimeout(() => popup.classList.add("show"), 50);
+  setTimeout(() => {
+    popup.classList.remove("show");
+    setTimeout(() => popup.remove(), 300);
+  }, 3000);
+}
+
+const texts = ["Web Developer", "Software Developer", "Problem Solver"];
+let count = 0;
+let index = 0;
+let currentText = '';
+let letter = '';
+(function type() {
+  if(count === texts.length) count = 0;
+  currentText = texts[count];
+  letter = currentText.slice(0, ++index);
+  document.querySelector(".auto-text").textContent = letter;
+  if(letter.length === currentText.length){
+    setTimeout(() => {
+      index = 0;
+      count++;
+      document.querySelector(".auto-text").textContent = '';
+      type();
+    }, 2000); // Pause before next text
+  } else {
+    setTimeout(type, 150);
+  }
+})();
+
+
+
+  </script>
+</body>
+</html>
