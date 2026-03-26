@@ -70,93 +70,125 @@
   </div>
 </header>
 
+<canvas id="particles" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;"></canvas>
+
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+const mouse = { x: null, y: null };
+
+// Mouse movement
+window.addEventListener("mousemove", e => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
+
+// Resize
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  init();
+});
+
+function init() {
+  particles = [];
+  for (let i = 0; i < 120; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      z: Math.random() * 2, // depth
+      size: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 1.5,
+      vy: (Math.random() - 0.5) * 1.5
+    });
+  }
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+
+    // Depth movement
+    p.x += p.vx * p.z;
+    p.y += p.vy * p.z;
+
+    // Bounce
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+    // Parallax effect (mouse)
+    let dx = (mouse.x - p.x) * 0.0005 * p.z;
+    let dy = (mouse.y - p.y) * 0.0005 * p.z;
+    p.x += dx;
+    p.y += dy;
+
+    // Glow trail
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = "#38bdf8";
+
+    ctx.fillStyle = "rgba(56,189,248,0.8)";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size * p.z, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  connect();
+  requestAnimationFrame(drawParticles);
+}
+
+function connect() {
+  for (let a = 0; a < particles.length; a++) {
+    for (let b = a; b < particles.length; b++) {
+
+      let dx = particles[a].x - particles[b].x;
+      let dy = particles[a].y - particles[b].y;
+      let dist = dx * dx + dy * dy;
+
+      if (dist < 8000) {
+        ctx.strokeStyle = "rgba(56,189,248,0.15)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particles[a].x, particles[a].y);
+        ctx.lineTo(particles[b].x, particles[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+init();
+drawParticles();
+</script>
+
 <!-- Hero Section -->
-<section class="hero" id="home"
-  style="height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; padding:0 20px; color:#fff; overflow:hidden; position:relative; background:linear-gradient(135deg,#0f172a,#1e293b);">
+<section class="hero" id="home">
+  <h1 style="font-size:3rem;">
+  Hi, I'm 
+  <span style="color:#38bdf8; animation:glow 2s infinite alternate;">
+    Kaushlendra Pratap Singh
+  </span>
+</h1>
 
-  <!-- Animated Background Glow -->
-  <div style="
-    position:absolute;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle, rgba(56,189,248,0.4), transparent 60%);
-    top:-100px;
-    left:-100px;
-    filter:blur(120px);
-    animation:moveGlow 8s infinite alternate;
-  "></div>
+<style>
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #38bdf8;
+  }
+  to {
+    text-shadow: 0 0 25px #38bdf8, 0 0 40px #38bdf8;
+  }
+}
+</style>
+  <h2>I am a <span class="auto-text"></span></h2>
 
-  <div style="
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:radial-gradient(circle, rgba(139,92,246,0.4), transparent 60%);
-    bottom:-100px;
-    right:-100px;
-    filter:blur(120px);
-    animation:moveGlow 10s infinite alternate;
-  "></div>
-
-  <!-- Content -->
-  <div style="z-index:2; animation:fadeUp 1.2s ease;">
-
-    <h1 style="font-size:3.2rem; margin-bottom:10px;">
-      Hi, I'm 
-      <span style="color:#38bdf8;">Kaushlendra Pratap Singh</span>
-    </h1>
-
-    <h2 style="font-size:1.6rem; color:#cbd5f5; margin-bottom:15px;">
-      I am a <span class="auto-text" style="color:#38bdf8;"></span>
-    </h2>
-
-    <p style="max-width:650px; margin:auto; opacity:0.85; margin-bottom:30px; font-size:1.05rem;">
-      Cloud Engineer specializing in AWS, Azure & DevOps Automation.  
-      I build scalable cloud systems, automate deployments, and create high-performance web apps.
-    </p>
-
-    <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
-
-      <a href="#projects"
-        style="background:#38bdf8; padding:14px 28px; border-radius:30px; color:#000; font-weight:bold; text-decoration:none; transition:0.3s;"
-        onmouseover="this.style.transform='scale(1.1)'"
-        onmouseout="this.style.transform='scale(1)'">
-        🚀 See My Work
-      </a>
-
-      <a href="./Kaushlendra Pratap Singh.pdf" download
-        style="border:1px solid #38bdf8; padding:14px 28px; border-radius:30px; color:#fff; text-decoration:none; transition:0.3s;"
-        onmouseover="this.style.background='#38bdf8'; this.style.color='#000';"
-        onmouseout="this.style.background='transparent'; this.style.color='#fff';">
-        📄 Download Resume
-      </a>
-
-    </div>
-
-  </div>
-
-  <!-- Animations -->
-  <style>
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes moveGlow {
-      from {
-        transform: translate(0, 0);
-      }
-      to {
-        transform: translate(80px, 60px);
-      }
-    }
-  </style>
-
+  <a href="#projects" class="btn-primary">See My Work</a>
+  <a href="./Kaushlendra Pratap Singh.pdf" download class="btn-secondary">Download Resume</a>
 </section>
 
 <!-- About Section -->
