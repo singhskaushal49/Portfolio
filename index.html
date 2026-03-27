@@ -72,100 +72,6 @@
 
 <canvas id="particles" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;"></canvas>
 
-<script>
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-const mouse = { x: null, y: null };
-
-// Mouse movement
-window.addEventListener("mousemove", e => {
-  mouse.x = e.x;
-  mouse.y = e.y;
-});
-
-// Resize
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  init();
-});
-
-function init() {
-  particles = [];
-  for (let i = 0; i < 120; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      z: Math.random() * 2, // depth
-      size: Math.random() * 2 + 1,
-      vx: (Math.random() - 0.5) * 1.5,
-      vy: (Math.random() - 0.5) * 1.5
-    });
-  }
-}
-
-function drawParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.forEach(p => {
-
-    // Depth movement
-    p.x += p.vx * p.z;
-    p.y += p.vy * p.z;
-
-    // Bounce
-    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-    // Parallax effect (mouse)
-    let dx = (mouse.x - p.x) * 0.0005 * p.z;
-    let dy = (mouse.y - p.y) * 0.0005 * p.z;
-    p.x += dx;
-    p.y += dy;
-
-    // Glow trail
-    ctx.shadowBlur = 20;
-    ctx.shadowColor = "#38bdf8";
-
-    ctx.fillStyle = "rgba(56,189,248,0.8)";
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size * p.z, 0, Math.PI * 2);
-    ctx.fill();
-  });
-
-  connect();
-  requestAnimationFrame(drawParticles);
-}
-
-function connect() {
-  for (let a = 0; a < particles.length; a++) {
-    for (let b = a; b < particles.length; b++) {
-
-      let dx = particles[a].x - particles[b].x;
-      let dy = particles[a].y - particles[b].y;
-      let dist = dx * dx + dy * dy;
-
-      if (dist < 8000) {
-        ctx.strokeStyle = "rgba(56,189,248,0.15)";
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(particles[a].x, particles[a].y);
-        ctx.lineTo(particles[b].x, particles[b].y);
-        ctx.stroke();
-      }
-    }
-  }
-}
-
-init();
-drawParticles();
-</script>
-
 <!-- Hero Section -->
 <section class="hero" id="home">
   <h1 style="font-size:3rem;">
@@ -777,7 +683,97 @@ backToTop.addEventListener("click", () => {
   });
 });
 
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
 
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+const mouse = { x: null, y: null };
+
+// Mouse movement
+window.addEventListener("mousemove", e => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
+
+// Resize
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  init();
+});
+
+function init() {
+  particles = [];
+  for (let i = 0; i < 120; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      z: Math.random() * 2, // depth
+      size: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 1.5,
+      vy: (Math.random() - 0.5) * 1.5
+    });
+  }
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+
+    // Depth movement
+    p.x += p.vx * p.z;
+    p.y += p.vy * p.z;
+
+    // Bounce
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+    // Parallax effect (mouse)
+    let dx = (mouse.x - p.x) * 0.0005 * p.z;
+    let dy = (mouse.y - p.y) * 0.0005 * p.z;
+    p.x += dx;
+    p.y += dy;
+
+    // Glow trail
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = "#38bdf8";
+
+    ctx.fillStyle = "rgba(56,189,248,0.8)";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size * p.z, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  connect();
+  requestAnimationFrame(drawParticles);
+}
+
+function connect() {
+  for (let a = 0; a < particles.length; a++) {
+    for (let b = a; b < particles.length; b++) {
+
+      let dx = particles[a].x - particles[b].x;
+      let dy = particles[a].y - particles[b].y;
+      let dist = dx * dx + dy * dy;
+
+      if (dist < 8000) {
+        ctx.strokeStyle = "rgba(56,189,248,0.15)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particles[a].x, particles[a].y);
+        ctx.lineTo(particles[b].x, particles[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+init();
+drawParticles();
 
   </script>
 </body>
