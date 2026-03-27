@@ -898,6 +898,13 @@ function connect() {
 init();
 drawParticles();
 
+ if (window.innerWidth <= 768) {
+    const canvas = document.getElementById('particles');
+    if (canvas) {
+      canvas.remove(); // Canvas DOM se remove ho jayega
+    }
+  }
+
   </script>
   
 </body>

@@ -622,6 +622,12 @@ body.dark-mode .footer-section a {
   transform: scale(1.05);
   background: var(--primary-accent);
 }
+ /* Mobile devices par canvas hide kar de */
+  @media only screen and (max-width: 768px) {
+    #particles {
+      display: none !important;
+    }
+  }
 
 /* =========================
    Projects Section
