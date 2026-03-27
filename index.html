@@ -36,7 +36,16 @@
   <div class="container">
 
     <!-- Logo -->
-    <div class="logo">My Portfolio</div>
+    <div class="logo" style="
+  font-size:24px;
+  font-weight:bold;
+  color:#38bdf8;
+  letter-spacing:2px;
+  font-family:Poppins, sans-serif;
+  text-shadow:0 0 8px #38bdf8, 0 0 20px #38bdf8;
+">
+  &lt;Kaushal <span style="color:#ffffff;">Singh</span>/&gt;
+</div>
 
     <!-- Navigation -->
     <nav class="nav" id="navMenu">
@@ -177,9 +186,123 @@
       <div class="skill">Linux</div>
       <div class="skill">Docker</div>
       <div class="skill">AI Prompt</div>
+      <div class="skill">AI Prompt</div>
+      <div class="skill">AI Prompt</div>
+      <div class="skill">AI Prompt</div>
     </div>
   </section>
+<section>
+  <div style="
+  width:220px;
+  height:220px;
+  margin:60px auto;
+  perspective:800px;
+">
 
+  <div style="
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    animation:rotateCube 10s infinite linear;
+  "
+  onmouseover="this.style.animationPlayState='paused'"
+  onmouseout="this.style.animationPlayState='running'"
+  >
+
+    <!-- Common face style -->
+    
+    <!-- Front -->
+    <div style="
+      position:absolute;
+      width:220px;
+      height:220px;
+      background:rgba(56,189,248,0.1);
+      border:2px solid #38bdf8;
+      box-shadow:0 0 20px #38bdf8, inset 0 0 20px #38bdf8;
+      transform:translateZ(110px);
+      display:flex;align-items:center;justify-content:center;
+      color:#38bdf8;
+      font-weight:bold;
+    ">AWS</div>
+
+    <!-- Back -->
+    <div style="
+      position:absolute;
+      width:220px;
+      height:220px;
+      background:rgba(14,165,233,0.1);
+      border:2px solid #0ea5e9;
+      box-shadow:0 0 20px #0ea5e9, inset 0 0 20px #0ea5e9;
+      transform:rotateY(180deg) translateZ(110px);
+      display:flex;align-items:center;justify-content:center;
+      color:#0ea5e9;
+    ">AZURE</div>
+
+    <!-- Left -->
+    <div style="
+      position:absolute;
+      width:220px;
+      height:220px;
+      background:rgba(34,197,94,0.1);
+      border:2px solid #22c55e;
+      box-shadow:0 0 20px #22c55e, inset 0 0 20px #22c55e;
+      transform:rotateY(-90deg) translateZ(110px);
+      display:flex;align-items:center;justify-content:center;
+      color:#22c55e;
+    ">DOCKER</div>
+
+    <!-- Right -->
+    <div style="
+      position:absolute;
+      width:220px;
+      height:220px;
+      background:rgba(139,92,246,0.1);
+      border:2px solid #8b5cf6;
+      box-shadow:0 0 20px #8b5cf6, inset 0 0 20px #8b5cf6;
+      transform:rotateY(90deg) translateZ(110px);
+      display:flex;align-items:center;justify-content:center;
+      color:#8b5cf6;
+    ">CI/CD</div>
+
+    <!-- Top -->
+    <div style="
+      position:absolute;
+      width:220px;
+      height:220px;
+      background:rgba(251,191,36,0.1);
+      border:2px solid #fbbf24;
+      box-shadow:0 0 20px #fbbf24, inset 0 0 20px #fbbf24;
+      transform:rotateX(90deg) translateZ(110px);
+      display:flex;align-items:center;justify-content:center;
+      color:#fbbf24;
+    ">LINUX</div>
+
+    <!-- Bottom -->
+    <div style="
+      position:absolute;
+      width:220px;
+      height:220px;
+      background:rgba(239,68,68,0.1);
+      border:2px solid #ef4444;
+      box-shadow:0 0 20px #ef4444, inset 0 0 20px #ef4444;
+      transform:rotateX(-90deg) translateZ(110px);
+      display:flex;align-items:center;justify-content:center;
+      color:#ef4444;
+    ">DEVOPS</div>
+
+  </div>
+
+</div>
+
+<style>
+@keyframes rotateCube {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+</style>
+
+</section>
   <!-- Projects Section -->
   <section class="projects" id="projects">
     <h2>Projects</h2>
@@ -776,5 +899,6 @@ init();
 drawParticles();
 
   </script>
+  
 </body>
 </html>
