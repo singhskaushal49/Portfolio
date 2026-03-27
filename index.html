@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6646/6646479.png" type="image/x-icon">
+   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <title>Kaushlendra Pratap Singh | Portfolio</title>
 
   <!-- Google Fonts -->
@@ -88,12 +89,6 @@
     display:block;
   ">
   </canvas>
-
-  <script>
-    if (window.innerWidth <= 768) {
-      document.getElementById("particles").style.display = "none";
-    }
-  </script>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
@@ -267,24 +262,7 @@
     }
   </style>
 
-  <script>
-    const card = document.getElementById("card");
 
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const rotateX = (y / rect.height - 0.5) * 10;
-      const rotateY = (x / rect.width - 0.5) * -10;
-
-      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "rotateX(0) rotateY(0)";
-    });
-  </script>
 
   <!-- Skills Section -->
   <section class="skills" id="skills">
@@ -562,14 +540,6 @@
       </div>
     </div>
   </section>
-
-
-  <!-- AOS.js CDN for animation -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
-  </script>
 
 
   <!-- Footer -->
@@ -1037,7 +1007,30 @@
       }
     }
 
+    const card = document.getElementById("card");
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const rotateX = (y / rect.height - 0.5) * 10;
+      const rotateY = (x / rect.width - 0.5) * -10;
+
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateX(0) rotateY(0)";
+    });
+
+    AOS.init({ duration: 800, once: true });
+    
+    if (window.innerWidth <= 768) {
+      document.getElementById("particles").style.display = "none";
+    }
   </script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 </body>
 
