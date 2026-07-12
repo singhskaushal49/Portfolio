@@ -280,6 +280,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const navPillWrapper = document.querySelector(".nav-pill-wrapper");
   const navActions = document.querySelector(".nav-actions");
   const navSocials = document.querySelector(".nav-socials");
+  const sidebarClose = document.getElementById("sidebarClose");
+
+  const closeSidebar = () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("open");
+    if(navPillWrapper) navPillWrapper.classList.remove("mobile-open");
+    if(navActions) navActions.classList.remove("mobile-open");
+    if(navSocials) navSocials.classList.remove("mobile-open");
+    document.body.style.overflow = "";
+  };
 
   if (hamburger && navMenu) {
     hamburger.addEventListener("click", () => {
@@ -293,27 +303,20 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = navMenu.classList.contains("open") ? "hidden" : "";
     });
 
+    // Close on close button click
+    if(sidebarClose) {
+      sidebarClose.addEventListener("click", closeSidebar);
+    }
+
     // Close nav on link click (mobile)
     navMenu.querySelectorAll("a.nav-link").forEach(link => {
-      link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("open");
-        if(navPillWrapper) navPillWrapper.classList.remove("mobile-open");
-        if(navActions) navActions.classList.remove("mobile-open");
-        if(navSocials) navSocials.classList.remove("mobile-open");
-        document.body.style.overflow = "";
-      });
+      link.addEventListener("click", closeSidebar);
     });
 
     // Close on clicking outside
     document.addEventListener("click", (e) => {
       if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("open");
-        if(navPillWrapper) navPillWrapper.classList.remove("mobile-open");
-        if(navActions) navActions.classList.remove("mobile-open");
-        if(navSocials) navSocials.classList.remove("mobile-open");
-        document.body.style.overflow = "";
+        closeSidebar();
       }
     });
   }
