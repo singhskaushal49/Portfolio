@@ -835,6 +835,8 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================= */
   const canvas = document.getElementById("webgl-canvas");
   if (canvas && typeof THREE !== "undefined") {
+    const isMobile = window.innerWidth < 768;
+
     // Scene setup
     const scene = new THREE.Scene();
     
@@ -842,14 +844,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 30;
 
-    // Renderer setup
-    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    // Renderer setup — lower pixel ratio on mobile for performance
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: !isMobile });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
 
-    // Generative Art: Particle Geometry
+    // Fewer particles on mobile, more on desktop
+    const count = isMobile ? 800 : 3000;
     const geometry = new THREE.BufferGeometry();
-    const count = 3000;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     
@@ -880,12 +882,12 @@ document.addEventListener("DOMContentLoaded", () => {
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Particle Material
+    // Particle Material — bigger stars on mobile for better visibility
     const material = new THREE.PointsMaterial({
-      size: 0.15,
+      size: isMobile ? 0.25 : 0.15,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
+      opacity: isMobile ? 0.9 : 0.8,
       blending: THREE.AdditiveBlending,
       sizeAttenuation: true
     });
@@ -894,18 +896,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
-    // Mouse Interaction
+    // Mouse Interaction (desktop only — no mousemove on touch devices)
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
     let targetY = 0;
-    const windowHalfX = window.innerWidth / 2;
-    const windowHalfY = window.innerHeight / 2;
 
-    document.addEventListener('mousemove', (event) => {
-      mouseX = (event.clientX - windowHalfX) * 0.001;
-      mouseY = (event.clientY - windowHalfY) * 0.001;
-    });
+    if (!isMobile) {
+      const windowHalfX = window.innerWidth / 2;
+      const windowHalfY = window.innerHeight / 2;
+      document.addEventListener('mousemove', (event) => {
+        mouseX = (event.clientX - windowHalfX) * 0.001;
+        mouseY = (event.clientY - windowHalfY) * 0.001;
+      });
+    }
 
     // Scroll Interaction
     let scrollY = 0;
@@ -927,25 +931,29 @@ document.addEventListener("DOMContentLoaded", () => {
       requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
-      // Rotate sphere slowly
-      particles.rotation.y = elapsedTime * 0.1;
-      particles.rotation.x = elapsedTime * 0.05;
+      // Rotate sphere slowly — slower on mobile for elegance
+      particles.rotation.y = elapsedTime * (isMobile ? 0.05 : 0.1);
+      particles.rotation.x = elapsedTime * (isMobile ? 0.025 : 0.05);
 
-      // Interactive Parallax
-      targetX = mouseX * 2;
-      targetY = mouseY * 2;
-      
-      // Add scroll effect to camera position
-      const scrollOffset = scrollY * 0.01;
+      // Twinkling effect on mobile — stars pulse opacity
+      if (isMobile) {
+        material.opacity = 0.6 + Math.sin(elapsedTime * 1.5) * 0.3;
+      }
 
-      camera.position.x += (targetX - camera.position.x) * 0.02;
-      camera.position.y += (-targetY - scrollOffset - camera.position.y) * 0.02;
-      camera.lookAt(scene.position);
+      if (!isMobile) {
+        // Interactive Parallax (desktop only)
+        targetX = mouseX * 2;
+        targetY = mouseY * 2;
+        const scrollOffset = scrollY * 0.01;
+        camera.position.x += (targetX - camera.position.x) * 0.02;
+        camera.position.y += (-targetY - scrollOffset - camera.position.y) * 0.02;
+        camera.lookAt(scene.position);
+      }
 
       renderer.render(scene, camera);
     }
     
-    // Render animation on all devices as requested
+    // Render animation on all devices
     animate();
   }
 
