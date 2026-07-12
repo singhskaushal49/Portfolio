@@ -871,10 +871,8 @@ document.addEventListener("DOMContentLoaded", () => {
       renderer.render(scene, camera);
     }
     
-    // Only render on laptop/desktop (1024px+) to save mobile performance
-    if (window.innerWidth >= 1024) {
-      animate();
-    }
+    // Render animation on all devices as requested
+    animate();
   }
 
   /* =========================
