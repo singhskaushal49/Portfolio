@@ -520,17 +520,17 @@ section {
   padding: 48px 40px;
   max-width: 800px;
   width: 100%;
-  animation: floatCard 6s ease-in-out infinite;
+  animation: glassPulse 4s ease-in-out infinite;
 }
 
-@keyframes floatCard {
+@keyframes glassPulse {
   0%, 100% {
-    transform: translateY(0);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(56, 189, 248, 0.1) inset;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 10px rgba(56, 189, 248, 0.05) inset;
+    border-color: rgba(255, 255, 255, 0.08);
   }
   50% {
-    transform: translateY(-12px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.25) inset;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 25px rgba(56, 189, 248, 0.2) inset, 0 0 15px rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.3);
   }
 }
 
