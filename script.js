@@ -106,7 +106,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function initGSAP() {
     console.log("Initializing GSAP animations...");
     if (typeof gsap === "undefined") {
-      console.warn("GSAP is not loaded. Skipping animations.");
+      console.warn("GSAP is not loaded. Showing header as fallback.");
+      // Fallback: Make header visible immediately without animation
+      const headerEl = document.querySelector(".header");
+      if (headerEl) {
+        headerEl.style.opacity = "1";
+        headerEl.style.transform = "translateY(0)";
+        headerEl.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      }
       return;
     }
 
@@ -118,8 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Entrance Animation Timeline ---
     const entranceTimeline = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-    // Initial state setup to prevent flashes
-    gsap.set(".header", { y: -100, opacity: 0 });
+    // CSS already sets header opacity:0 and translateY(-40px)
+    // GSAP takes over here — no need for gsap.set on header
     gsap.set(".logo", { scale: 0.8, opacity: 0 });
     gsap.set(".nav-links li", { opacity: 0, y: -20 });
     gsap.set(".nav-actions button, .nav-socials a", { opacity: 0, scale: 0.5 });
