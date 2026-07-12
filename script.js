@@ -95,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const btt = document.getElementById('back-to-top');
     if (btt) btt.addEventListener('click', () => haptic.medium());
 
-    console.log('✅ Haptic Feedback initialized on mobile');
   }
 
   initHaptics();
@@ -104,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
      Loader & GSAP Animations
   ========================= */
   function initGSAP() {
-    console.log("Initializing GSAP animations...");
     if (typeof gsap === "undefined") {
       console.warn("GSAP is not loaded. Showing header as fallback.");
       // Fallback: Make header visible immediately without animation
@@ -278,7 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Refresh ScrollTrigger positions after configuration
       ScrollTrigger.refresh();
-      console.log("ScrollTrigger registered and refreshed.");
     }
 
     // --- Magnetic CTA Buttons ---
@@ -823,7 +820,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         backToTopBtn.classList.remove("show");
       }
-    });
+    }, { passive: true });
 
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
