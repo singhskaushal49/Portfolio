@@ -34,6 +34,73 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
+     Haptic Feedback (Vibration API)
+  ========================= */
+  const haptic = {
+    // Check if vibration is supported (mobile only)
+    supported: 'vibrate' in navigator,
+
+    // Light tap — for nav links, chips, small buttons
+    light() {
+      if (this.supported) navigator.vibrate(15);
+    },
+
+    // Medium — for main CTAs, toggle buttons
+    medium() {
+      if (this.supported) navigator.vibrate(35);
+    },
+
+    // Heavy — for send/submit actions, important feedback
+    heavy() {
+      if (this.supported) navigator.vibrate([30, 20, 30]);
+    },
+
+    // Success pattern — for form submit, download
+    success() {
+      if (this.supported) navigator.vibrate([10, 50, 10, 50, 80]);
+    },
+
+    // Error pattern — for wrong input etc.
+    error() {
+      if (this.supported) navigator.vibrate([100, 30, 100]);
+    }
+  };
+
+  // Auto-apply haptics to all interactive elements
+  function initHaptics() {
+    if (!haptic.supported) return; // Skip on desktop
+
+    // Light haptic: nav links, sidebar links, quick reply chips
+    document.querySelectorAll('.nav-link, .sidebar-nav-link, .quick-reply-chip, .social-pill').forEach(el => {
+      el.addEventListener('click', () => haptic.light());
+    });
+
+    // Medium haptic: all main buttons (CTAs, toggle, hamburger, chatbot button)
+    document.querySelectorAll('.magnetic-btn, .chatbot-toggle, .hamburger, .back-to-top, .sidebar-close, #chatbot-close, .music-toggle, .submit-btn').forEach(el => {
+      el.addEventListener('click', () => haptic.medium());
+    });
+
+    // Heavy haptic: chatbot send button (important action)
+    const chatSend = document.getElementById('chatbot-send');
+    if (chatSend) {
+      chatSend.addEventListener('click', () => haptic.heavy());
+    }
+
+    // Success haptic: resume download
+    document.querySelectorAll('[download], .cert-link-btn').forEach(el => {
+      el.addEventListener('click', () => haptic.success());
+    });
+
+    // Medium haptic: back-to-top
+    const btt = document.getElementById('back-to-top');
+    if (btt) btt.addEventListener('click', () => haptic.medium());
+
+    console.log('✅ Haptic Feedback initialized on mobile');
+  }
+
+  initHaptics();
+
+  /* =========================
      Loader & GSAP Animations
   ========================= */
   function initGSAP() {
