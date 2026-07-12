@@ -3386,17 +3386,111 @@ body.dark-mode .chatbot-messages::-webkit-scrollbar-thumb {
    RESPONSIVE DESIGN — SMALL MOBILE (≤480px)
    ========================================================================== */
 @media (max-width: 480px) {
-  section { padding: 56px 12px; }
-  .hero h1 { font-size: clamp(1.7rem, 8vw, 2.5rem); }
-  .hero h2 { font-size: clamp(0.9rem, 4.5vw, 1.2rem); }
-  .magnetic-btn { padding: 14px 24px; font-size: 0.95rem; }
-  .about-img-frame { width: 200px; height: 200px; }
-  .about-stats { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px; }
-  .stat-num { font-size: 1.3rem; }
-  .stat-label { font-size: 0.65rem; }
-  .section-header h2 { font-size: 1.65rem; }
-  .leetcode-stats-card { border-radius: 14px; padding: 14px 10px; }
-  .footer-container { grid-template-columns: 1fr; }
-  .floating-badge { padding: 6px 10px; }
-  .badge-num { font-size: 1rem; }
+  /* Layout & Spacing */
+  section { padding: 50px 16px; }
+  .section-header { margin-bottom: 24px; }
+  .section-header h2 { font-size: 1.8rem; margin-bottom: 6px; }
+  .section-sub { font-size: 0.85rem; letter-spacing: 1px; }
+
+  /* Typography */
+  p, .timeline-content p, .about-text-blocks p { 
+    font-size: 0.92rem; 
+    line-height: 1.6; 
+  }
+
+  /* Hero Section */
+  .hero { 
+    padding: 0 16px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+  }
+  .hero-glass-card {
+    padding: 32px 20px;
+    border-radius: 24px;
+    background: rgba(10, 15, 30, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    margin-top: 20px;
+  }
+  .hero h1 { 
+    font-size: clamp(2.2rem, 10vw, 2.8rem); 
+    line-height: 1.15; 
+    margin-bottom: 10px;
+  }
+  .hero h2 { 
+    font-size: clamp(0.95rem, 5vw, 1.15rem); 
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  /* Buttons */
+  .hero-actions .magnetic-btn { 
+    width: 100%; 
+    padding: 16px; 
+    font-size: 1.05rem; 
+    border-radius: 16px; 
+    font-weight: 600;
+  }
+  
+  /* Timeline (Experience) */
+  .timeline { 
+    padding: 10px 0 10px 24px; 
+  }
+  .timeline::before { 
+    left: 4px; 
+  }
+  .timeline-item::before { 
+    left: -24px; 
+    width: 14px; 
+    height: 14px; 
+    top: 22px; 
+    border-width: 3px; 
+  }
+  .timeline-content { 
+    padding: 18px 16px; 
+    border-radius: 20px; 
+  }
+  .timeline-content h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .timeline-meta { font-size: 0.8rem; margin-bottom: 12px; display: block; }
+
+  /* About Section */
+  .about-img-frame { width: 180px; height: 180px; }
+  .about-stats { gap: 12px; padding: 16px; border-radius: 20px; }
+  .stat-num { font-size: 1.5rem; }
+  .stat-label { font-size: 0.75rem; }
+  
+  /* Cards General */
+  .glass-card, .leetcode-stats-card, .project-card, .cert-card, .testimonial-card {
+    border-radius: 20px;
+  }
+
+  /* LeetCode */
+  .leetcode-stats-card { padding: 20px 16px; }
+  .lc-header { margin-bottom: 16px; }
+  
+  /* Contact Form */
+  .connect-form-wrap {
+    padding: 24px 16px;
+    border-radius: 24px;
+  }
+  .input-field {
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+  }
+  .submit-btn {
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 1.05rem;
+    margin-top: 8px;
+  }
+  
+  /* Footer */
+  .footer { padding: 60px 16px 100px; }
+  .footer-container { gap: 32px; text-align: center; }
+  .social-pill { width: 100%; justify-content: center; padding: 14px; border-radius: 14px; margin-bottom: 8px; }
+  .footer-links { justify-content: center; }
 }
