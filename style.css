@@ -75,7 +75,13 @@ section {
   width: 100%;
 }
 
-/* Particles Canvas - All devices */
+
+/* ==========================================================================
+   GPU Acceleration Hints
+   Force animated elements onto their own GPU compositor layers
+   ========================================================================== */
+
+/* Three.js canvas — always composited separately */
 #webgl-canvas {
   position: fixed;
   top: 0;
@@ -84,7 +90,39 @@ section {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  display: block; /* Enabled on all devices including mobile */
+  display: block;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Animated orbs — separate GPU layer */
+.hero-orb {
+  will-change: transform, opacity;
+}
+
+/* Hero glass card — floating animation layer */
+.hero-glass-card {
+  will-change: transform, box-shadow;
+}
+
+/* 3D Cube — heavy transform, needs own layer */
+.cube-container {
+  will-change: transform;
+}
+
+/* Scroll progress bar — frequent width changes */
+.scroll-progress {
+  will-change: width;
+}
+
+/* Fixed floating buttons — avoid repaints */
+.chatbot-toggle, .back-to-top {
+  will-change: transform, opacity;
+}
+
+/* Chatbot panel — slide/scale animation */
+.chatbot {
+  will-change: transform, opacity;
 }
 
 /* Scroll Progress Indicator */

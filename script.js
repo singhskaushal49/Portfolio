@@ -912,20 +912,25 @@ document.addEventListener("DOMContentLoaded", () => {
     let scrollY = 0;
     window.addEventListener('scroll', () => {
       scrollY = window.scrollY;
-    });
+    }, { passive: true });
 
-    // Handle Resize
+    // Debounced Resize — prevents CPU spike on every pixel of resize
+    let resizeTimer;
     window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }, 150);
+    }, { passive: true });
 
     // Animation Loop
     const clock = new THREE.Clock();
+    let animationId = null;
     
     function animate() {
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
       // Rotate sphere slowly — slower on mobile for elegance
@@ -949,8 +954,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       renderer.render(scene, camera);
     }
+
+    // Page Visibility API — pause when tab hidden, resume when visible
+    // Saves GPU power and battery when user switches tabs
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (animationId) cancelAnimationFrame(animationId);
+        clock.stop();
+      } else {
+        clock.start();
+        animate();
+      }
+    });
     
-    // Render animation on all devices
+    // Start animation
     animate();
   }
 
